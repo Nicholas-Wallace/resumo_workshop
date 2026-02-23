@@ -1,0 +1,28 @@
+{
+  "jequitinhonha": {
+    "columns": [
+      "TRACE_SEQUENCE_LINE",
+      "TRACE_SEQUENCE_FILE",
+      "FieldRecord",
+      "TraceNumber",
+      "EnergySourcePoint",
+      "CDP",
+      "TraceIdentificationCode",
+      "NStackedTraces",
+      "offset",
+      "ElevationScalar",
+      "SourceGroupScalar",
+      "SourceX",
+      "SourceY",
+      "GroupX",
+      "GroupY",
+      "CoordinateUnits",
+      "MuteTimeStart",
+      "TRACE_SAMPLE_COUNT",
+      "TRACE_SAMPLE_INTERVAL",
+      "ScalarTraceHeader"
+    ],
+    "infos": "DETAILED INFORMATION OF THE SEG-Y FILE\nINFORMATION CONTAINED IN THE ASCII HEADER:\nASCII_header: C      This tape was made at the                                               \nC                                                                              \nC      Center for Wave Phenomena                                               \nC      Colorado School of Mines                                                \nC      Golden, CO, 80401                                                       \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              \nC                                                                              BASIC INFORMATION:\nRecording Time: 0 s\nDistance Between Shot Points: 250000 m\nPlot Direction: RL\nOffset Range: -3125 - -150 m\nNumber of Channels: 120\nCDP Range: 1700 - 1900\n\nBINARY HEADER INFORMATION:\nData Format: 1\nSampling Rate (ms): 4\nJobid: 1\nLine Number: 1\nReelnumber: 1\nSamples per Trace: 1001\nTraces: 1\nData Type: 2D\nGEOMETRY INFORMATION:\nTotal Traces: 12060\nTotal Shots: 160\nCoordinates:\n  X: -237250000 - -197500000\n  Y: -21 - -17\n\nACQUISITION INFORMATION:\nAverage Fold: 60\nMaximum Fold: 60\nMinimum Fold: 60\n",
+    "scalco": "-10000"
+  }
+}

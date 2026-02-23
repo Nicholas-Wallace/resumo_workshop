@@ -1,0 +1,10 @@
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+Bonito = "824d6782-a2ef-11e9-3a09-e5662e0c26f8"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
+GenieDeployDocker = "a082159f-dd50-4f6d-a3c5-00c38fd36577"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Parquet2 = "98572fba-bba0-415d-956f-fa77e587d26d"
+SegyIO = "157a0f19-4d44-4de5-a0d0-07e2f0ac4dfa"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"

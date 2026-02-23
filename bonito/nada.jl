@@ -1,0 +1,63 @@
+function read_data(filename::String, cdp_range)
+    #keys = ["CDP"]
+    #scan = segy_scan("/home/nicholas/code-test/resumo_workshop/bonito", "0258-6112A.sgy", keys)
+
+    block = segy_read(filename) 
+
+    #cdps = [blocks.summary["CDP"][1] for blocks in scan.blocks]
+    #mask = [cdp in cdp_range for cdp in cdps]
+    #indices = findall(mask)
+
+    #block = read_con(scan, )
+    amplitudes = Float32.(block.data)
+
+    return amplitudes, block.fileheader.bfh.ns,  block.fileheader.bfh.dt/1000
+
+end
+
+function makie_plot(filename)
+    f = Figure()
+    ax = Axis(f[1, 1],
+        title = "seismic_section",
+        titlesize = 24,
+        xlabel = "trace",
+        ylabel = "time(s)",
+        xlabelsize = 18,
+        ylabelsize = 18,
+        xticklabelsize = 18,
+        yticklabelsize = 18,
+        yreversed = true,         
+        xgridvisible = false,      
+        ygridvisible = false
+    )
+
+    amplitudes, ns, dt = read_data(filename, 324:1253)
+    max_amp = maximum(abs,amplitudes)
+    norm_amplitudes = amplitudes / max_amp
+
+    max_amp = maximum(norm_amplitudes)
+    min_amp = minimum(norm_amplitudes)
+
+    @show max_amp
+    @show min_amp
+
+    y = collect(range(0, dt, size(amplitudes)[2]))
+    x = collect(1:size(amplitudes)[1])
+    z = norm_amplitudes'
+
+    heatmap!(ax, x, y, z,
+        colormap = :balance, 
+        colorrange = (min_amp, max_amp),
+        interpolate = true
+        )
+
+    Colorbar(f[1, 2], colormap=:balance,
+        labelsize = 14,
+        ticklabelsize = 14,
+        width = 30, # thickness
+        tellheight = true 
+    )
+
+    return f
+
+end

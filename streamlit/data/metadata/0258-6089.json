@@ -1,0 +1,41 @@
+{
+  "0258-6089": {
+    "columns": [
+      "TRACE_SEQUENCE_LINE",
+      "TRACE_SEQUENCE_FILE",
+      "FieldRecord",
+      "TraceNumber",
+      "EnergySourcePoint",
+      "CDP",
+      "CDP_TRACE",
+      "TraceIdentificationCode",
+      "NSummedTraces",
+      "NStackedTraces",
+      "DataUse",
+      "offset",
+      "SourceDepth",
+      "SourceWaterDepth",
+      "ElevationScalar",
+      "SourceGroupScalar",
+      "SourceX",
+      "SourceY",
+      "GroupX",
+      "GroupY",
+      "CoordinateUnits",
+      "TRACE_SAMPLE_COUNT",
+      "TRACE_SAMPLE_INTERVAL",
+      "LowCutFrequency",
+      "HighCutFrequency",
+      "LowCutSlope",
+      "HighCutSlope",
+      "YearDataRecorded",
+      "DayOfYear",
+      "TimeBaseCode",
+      "TransductionConstantMantissa",
+      "TransductionUnit",
+      "SourceMeasurementUnit"
+    ],
+    "infos": "DETAILED INFORMATION OF THE SEG-Y FILE\nINFORMATION CONTAINED IN THE ASCII HEADER:\nASCII_header: C01 CLIENT TGS-NOPEC              COMPANY GECO-PRAKLA           CREW N0 0258    \nC 2 LINE 0258-6089  AREA 0258_2D_SPEC_BM_POT                                    \nC 3 REEL NO W20860    DAY-START OF REEL     YEAR      OBSERVER                  \nC04 INSTRUMENT  MFG GECO-PRAKLA MODEL TRIACQ 1.6.3 SERIAL NO 8015               \nC 5 DATA TRACES/RECORD   320  AUXILIARY TRACES/RECORD       0 CDP FOLD   320    \nC 6 SAMPLE INTERVAL  2.00   SAMPLES/TRACE  6145 BITS/IN      BYTES/SAMPLE  4    \nC07 RECORDING FORMAT       FORMAT THIS REEL ANP01A MEANSUREMENT SYSTEM          \nC 8 SAMPLE CODE FLOATING PT                                                     \nC 9 GAIN  TYPE                                                                  \nC10 FILTERS LOW-CUT 03 Hz - 18 dB/OCT - HIGH-CUT 200 Hz - 200 dB/OCT            \nC11 SOURCE TYPE AIR GUN     NUMBER/POINT         POINT INTERVAL 37.5            \nC12     PATTERN                            LENGTH        WIDTH                  \nC13 SWEEP  START     HZ  END     HZ  LENGTH      MS  CHANNEL NO     TYPE        \nC14 TAPER  START LENGTH       MS  END LENGTH       MS  TYPE                     \nC15 SPREAD  OFFSET        MAX DISTANCE        GROUP INTERVAL                    \nC16 GEOPHONES  PER GROUP     SPACING     FREQUENCY     MFG          MODEL       \nC17      TYPE                              LENGTH        WIDTH                  \nC18 TRACES SORTED BY RECORD        PROJECT                LINE ID               \nC19 AMPLITUDE RECOVERY                                                          \nC20 MAP PROJECTION UTM                  ZONE ID 24S     COORDINATE UNITS METERS \nC21 PROCESSING BY: WESTERNGECO DO BRASIL, A SCHLUMBERGER CO.                    \nC22 PROCESSING BY: WESTERNGECO - Rio de janeiro International Processing Center \nC23 SURVEY NAME 0258_2D_SPEC_BM_POT (POTIGUAR BASIN)                            \nC24 PERMIT NUMBER 176, DATE DEC 23, 1999                                        \nC25 SHOT BY: GECO-PRAKLA - M/V GECO TAU (JUL 18, 2000 TO NOV, 08 2000).         \nC26                                                                             \nC27 01 - CONVERT SEGD TO OMEGA FORMAT.                                          \nC28 02 - GEOMETRY UPDATE (NAVIGATION MERGE).                                    \nC29 03 - GRID DEFINE (PRE-STACK GRID).                                          \nC30 04 - OUTPUT SEGY (ANP1A FORMAT).                                            \nC31                                                                             \nC32 SPECIAL REMARKS.                                                            \nC33 SEGD 8015, 12s, 2ms, DELAY 0s, 320 Seis + 32 Aux CHANNELS                   \nC34 01 STREAMER(Nessie 3&4), 8000m, 320 CHANNES, 07m DEPTH, GROUP INT. 25m.     \nC35 SIGLE SOURCE, TOTAL VOL. 7918 cu.in., PRESS. 2000 psi, DEPTH 6m, INT. 37,5m.\nC36                                                                             \nC37                                                                             \nC38                                                                             \nC39 DATUM WGS-84               DATUM CODE 002      PROJECTION CODE 001          \nC40 END EBCDIC                                                                  BASIC INFORMATION:\nRecording Time: 0 s\nDistance Between Shot Points: 0 m\nPlot Direction: RL\nOffset Range: 181 - 8172 m\nNumber of Channels: 320\nCDP Range: 329 - 2734\n\nBINARY HEADER INFORMATION:\nEnsemblefold: 320\nData Format: 1\nImpulsesignalpolarity: 1\nSampling Rate (ms): 2\nIntervaloriginal: 2000\nLine Number: 6089\nMeasurement Code: 1\nReelnumber: 20860\nSamples per Trace: 6145\nSortingcode: 1\nTraces: 320\nVerticalsum: 320\nData Type: 2D\nGEOMETRY INFORMATION:\nTotal Traces: 218880\nTotal Shots: 684\nCoordinates:\n  X: 876420 - 893291\n  Y: 9502717 - 9522871\n\nACQUISITION INFORMATION:\nAverage Fold: 90.97\nMaximum Fold: 110\nMinimum Fold: 1\n",
+    "scalco": "1"
+  }
+}

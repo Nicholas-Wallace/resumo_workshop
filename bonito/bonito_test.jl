@@ -25,7 +25,7 @@ function read_data(filename::String)
     keys = ["TraceNumber"]
     scan = scan_file("/home/nicholas/code-test/resumo_workshop/streamlit/data/"*filename, keys, 100)
 
-    block = read_con(scan, 1:50)
+    block = read_con(scan, 1:500)
 
     return Float32.(block.data), block.fileheader.bfh.ns,  block.fileheader.bfh.dt/1000
 
@@ -75,14 +75,6 @@ function makie_plot(filename, current_cmap)
     min_amp = minimum(amplitudes)
 
     amplitudes = amplitudes'
-    traces = collect(1:size(amplitudes)[1])
-    t = collect(range(0, dt, size(amplitudes)[2]))
-
-    
-
-    y = t
-    x = traces 
-    z = amplitudes
 
     heatmap!(ax, Resampler(amplitudes),
         colormap = current_cmap, 
@@ -98,6 +90,15 @@ function makie_plot(filename, current_cmap)
         width = 30, # thickness
         tellheight = true 
     )
+
+    on(events(ax).keyboardbutton) do event
+        if event.action == Keyboard.press || event.action == Keyboard.repeat
+            if event.key == Keyboard.left_control
+                println("pressed")
+                reset_limits!(ax)
+            end
+        end
+    end
 
     return f
 

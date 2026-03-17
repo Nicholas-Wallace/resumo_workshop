@@ -2,7 +2,8 @@ using Bonito
 using WGLMakie 
 using SegyIO
 import WGLMakie as W
-using BenchmarkTools
+import Bonito.TailwindDashboard as D
+using Statistics
 
 # lê um arquivo segy com um certo range de cdp e retorna:
 # amplitudes, numero de amostras e duração total(s)
@@ -25,12 +26,26 @@ function read_data(filename::String)
     keys = ["TraceNumber"]
     scan = scan_file("/home/nicholas/code-test/resumo_workshop/streamlit/data/"*filename, keys, 100)
 
-    block = read_con(scan, 1:500)
+    #block = read_con(scan, 1:size(scan)[1])
+    block = read_con(scan, 1:size(scan)[1])
 
     return Float32.(block.data), block.fileheader.bfh.ns,  block.fileheader.bfh.dt/1000
 
 end
 
+function perc_slider()
+    s = Bonito.Slider(90:100; value=100)
+    return s
+end
+
+function apply_button(actual_perc_rate, perc_rate)
+    btn = Button("Apply")
+    on(btn.value) do _
+        actual_perc_rate[] = perc_rate.val 
+        println("apply")
+    end
+    return btn
+end
 
 function colormap_buttons(cmap_obs)
     options = [:balance, :grayC50]
@@ -50,7 +65,7 @@ end
 
 #end
 
-function makie_plot(filename, current_cmap)
+function makie_plot(amplitudes, current_cmap, perc_rate)
     f = Figure(size=(2*600, 2*450))
     ax = Axis(f[1, 1],
         title = "seismic_section",
@@ -66,23 +81,30 @@ function makie_plot(filename, current_cmap)
         ygridvisible = false,
         zoombutton=Keyboard.left_control
     )
+    
+    amplitudes = amplitudes / maximum(abs, amplitudes)
+    amplitudes = collect(Matrix{Float32}(amplitudes'))
 
-    amplitudes, ns, dt = read_data(filename)
-    max_amp = maximum(abs,amplitudes)
-    amplitudes = amplitudes / max_amp
+    display_data = Observable(amplitudes)
 
-    max_amp = maximum(amplitudes)
-    min_amp = minimum(amplitudes)
+    resampled_data = lift(display_data) do data
+        return Resampler(data)
+    end
 
-    amplitudes = amplitudes'
+    on(perc_rate) do val
+        dr = vec(amplitudes)
+        perc_val = quantile(dr, perc_rate.val/100)
+        
+        display_data[] = (clamp.(amplitudes, -perc_val, perc_val))/perc_val
+        println("Got an update: ", val)
 
-    heatmap!(ax, Resampler(amplitudes),
+    end
+
+    heatmap!(ax, resampled_data,
         colormap = current_cmap, 
-        colorrange = (min_amp, max_amp),
+        colorrange = (-1, 1),
         interpolate = true
         )
-
-    @show ax.limits
 
     Colorbar(f[1, 2], colormap=current_cmap,
         labelsize = 14,
@@ -110,15 +132,22 @@ WGLMakie.activate!(; use_html_widgets = true)
 
 app = App() do session
 
+    actual_perc_rate = Observable(100)
+
     current_cmap = Observable(:balance)
+    
+    amplitudes, ns, dt = read_data("jequitinhonha.sgy")
 
     controls = colormap_buttons(current_cmap)
+    s = perc_slider()
+    button_apply = apply_button(actual_perc_rate, s.value)
 
-    
+    @show actual_perc_rate
 
     return DOM.div(
         colormap_buttons(current_cmap),
-        makie_plot("0258-6089.sgy", current_cmap),
+        DOM.div(s, s.value, button_apply),
+        makie_plot(amplitudes, current_cmap, actual_perc_rate),
         style="""
             display:flex;
             justify-content: center;

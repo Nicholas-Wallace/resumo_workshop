@@ -19,8 +19,10 @@ app = App() do session
     actual_perc_rate = Observable(100)
 
     current_cmap = Observable(:balance)
+   
+    #index_cmap = Observable(1)
     
-    amplitudes, ns, dt = read_data("jequitinhonha.sgy")
+    amplitudes, ns, dt = read_data("0258-6089.sgy")
 
     controls = colormap_buttons(current_cmap)
     s = percentil_slider()
@@ -29,9 +31,8 @@ app = App() do session
     @show actual_perc_rate
 
     return DOM.div(
-        colormap_buttons(current_cmap),
-        DOM.div(s, s.value, button_apply),
-        makie_plot(amplitudes, current_cmap, actual_perc_rate),
+        DOM.div(DOM.h1("percentil adjustment"), s, s.value),
+        makie_plot(amplitudes, current_cmap, s.value),
         style="""
             display:flex;
             justify-content: center;

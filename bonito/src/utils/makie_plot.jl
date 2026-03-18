@@ -16,6 +16,9 @@ function makie_plot(amplitudes, current_cmap, perc_rate)
         ygridvisible = false,
         zoombutton=Keyboard.left_control
     )
+
+    index_cmap = 1
+    cmap_list = [:balance, :grayC50]
     
     amplitudes = amplitudes / maximum(abs, amplitudes)
     amplitudes = collect(Matrix{Float32}(amplitudes'))
@@ -48,12 +51,23 @@ function makie_plot(amplitudes, current_cmap, perc_rate)
         tellheight = true 
     )
 
+    DataInspector(f)
+
     on(events(ax).keyboardbutton) do event
         if event.action == Keyboard.press || event.action == Keyboard.repeat
             if event.key == Keyboard.left_control
                 println("pressed")
                 reset_limits!(ax)
             end
+
+            if event.key == Keyboard.h
+                # implementação de lista circular 
+                index_cmap = ((index_cmap)%size(cmap_list)[1]) + 1
+                @show size(cmap_list)
+                current_cmap[] = cmap_list[index_cmap]
+                @show index_cmap
+            end
+
         end
     end
 
